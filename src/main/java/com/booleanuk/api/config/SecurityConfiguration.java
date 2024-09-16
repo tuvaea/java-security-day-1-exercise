@@ -19,7 +19,8 @@ public class SecurityConfiguration {
         http
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/videogames", "/videogames/*").authenticated()
+                        .requestMatchers("/videogames/**", "/rentals/**", "/users/**", "/videogames", "/rentals", "/users").hasRole("ADMIN")
+                        .anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login").permitAll()

@@ -23,6 +23,10 @@ public class Videogame {
     private String game_studio;
     private Integer age_rating;
 
+    @OneToMany(mappedBy = "game")
+    @JsonIgnoreProperties("game")
+    private List<Rental> rentals;
+
     public Videogame(String title, String genre, String game_studio, Integer age_rating) {
         this.title = title;
         this.genre = genre;
